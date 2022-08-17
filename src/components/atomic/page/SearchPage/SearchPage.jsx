@@ -2,7 +2,8 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import { Row, Col } from 'antd';
 
-import { Logo, FilterDropdown, Search } from '@atomic';
+import { Logo, FilterDropdown, Search, PokemonCard } from '@atomic';
+import { pokemonInfo } from '@utils';
 
 import { regions, types, sortby } from './helper';
 
@@ -38,6 +39,13 @@ const StyledRow = styled(Row)`
   margin: auto;
   margin-top: 2rem;
   padding: 2rem;
+`;
+
+const PokemonContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  padding: 2rem;
+  justify-content: space-around;
 `;
 
 const getFetchPokemonFilters = (filters) => {
@@ -89,6 +97,11 @@ const SearchPage = () => {
           />
         </Col>
       </StyledRow>
+      <PokemonContainer>
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((x) => (
+          <PokemonCard key={x} pokemon={pokemonInfo} />
+        ))}
+      </PokemonContainer>
     </Container>
   );
 };
